@@ -25,7 +25,7 @@ def generate_file(file_obj):
 
 def main():
     global tmpdir
-
+    os.makedirs('./tmp/', exist_ok=True)
     with gr.Blocks() as demo:
         with gr.Row():
             with tempfile.TemporaryDirectory(dir='./tmp/') as tmpdir:
@@ -44,7 +44,7 @@ def main():
 
 
         # 启动应用程序
-        demo.launch(share=True)
+        demo.launch(share=False, server_port=6006)
 
 
 if __name__ == "__main__":
