@@ -17,7 +17,11 @@ def generate_file(file_obj):
     outFilePath = os.path.join(tmpdir, outFileName)
     os.makedirs(tmpdir, exist_ok=True)
 
-    startComputeXls(file_obj.name, outFilePath)
+    try:
+        startComputeXls(file_obj.name, outFilePath)
+    except Exception as e:
+        api_logger.error(e)
+        api_logger.error(f"startComputeXls失败")
 
     # 返回新文件的的地址（注意这里）
     return outFilePath
