@@ -1,7 +1,7 @@
 # 肺活量
 from excelToJson import *
 from datetime import datetime
-
+from logger_settings import api_logger
 
 itemName="50×8"
 
@@ -25,7 +25,7 @@ def getData_from_50_8(data):
 
     data_record = data[colName]
     dataSex = data["性别"]
-    print(f"性别： {dataSex} {colName}:{data_record}")
+    api_logger.info(f"性别： {dataSex} {colName}:{data_record}")
     level = data["年级"]
     if not data_record or not level:
         data_score = ""
@@ -52,14 +52,14 @@ def getData_from_50_8(data):
         if data_record <= scoreScopeFloatMin:
             data_score = step_data["得分"]
             data_level = step_data["等级"]
-            print(f"{colName} data_score: {data_score} data_score: {data_level}")
+            api_logger.info(f"{colName} data_score: {data_score} data_score: {data_level}")
             break
 
     return data_score,data_level   
 
 def updateDatas_from_50_8(srcDatas, itemNameArray):
     itemNameArray.append(itemName)
-    print(f"开始[{itemName}]检索")
+    api_logger.info(f"开始[{itemName}]检索")
     for data in srcDatas:
         if not f"{itemName}成绩" in data:
             data[f"{itemName}得分"] = ""

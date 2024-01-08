@@ -1,9 +1,11 @@
 from util import *
+from logger_settings import api_logger
+
 # 
 def updateDatas_compose(srcDatas, itemNameArray):
 
     itemName="测试成绩"
-    print(f"开始[{itemName}]检索")
+    api_logger.info(f"开始[{itemName}]检索")
 
     for data in srcDatas:
         totalScore = 0

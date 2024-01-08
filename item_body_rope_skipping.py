@@ -1,6 +1,6 @@
 # 肺活量
 from excelToJson import *
-
+from logger_settings import api_logger
 
 itemName="一分钟跳绳"
 
@@ -32,7 +32,7 @@ def getData_from_rope_skipping(data):
     colName = f"{itemName}成绩"
     data_record = data[colName]
     dataSex = data["性别"]
-    print(f"性别： {dataSex} {colName}:{data_record}")
+    api_logger.info(f"性别： {dataSex} {colName}:{data_record}")
     level = data["年级"]
     diffRecord = 0
 
@@ -58,11 +58,11 @@ def getData_from_rope_skipping(data):
             diffRecord = data_record - scoreScopeFloatMin
             data_score = step_data["得分"]
             data_level = step_data["等级"]
-            print(f"{colName} data_score: {data_score} data_score: {data_level}")
+            api_logger.info(f"{colName} data_score: {data_score} data_score: {data_level}")
             break
 
     if data_score == 100:
-        print("跳绳加分")
+        api_logger.info("跳绳加分")
         for step_data in jsonDatasExt:
             if data["性别"] != step_data["性别"]:
                 continue
@@ -83,7 +83,7 @@ def getData_from_rope_skipping(data):
 
 def updateDatas_from_rope_skipping(srcDatas, itemNameArray):
     itemNameArray.append(itemName)
-    print(f"开始[{itemName}]检索")
+    api_logger.info(f"开始[{itemName}]检索")
     for data in srcDatas:
         if not f"{itemName}成绩" in data:
             data[f"{itemName}得分"] = ""

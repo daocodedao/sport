@@ -5,6 +5,7 @@ import sys
 import openpyxl
 import json
 import io
+from logger_settings import api_logger
 
 # 将json保存为文件
 def save2json(jd, json_file_name):
@@ -26,7 +27,7 @@ def excel2json(excel_file, json_file_name):
     max_row = sheet.max_row
     # 列数
     max_column = sheet.max_column
-    # print("max_row: %d, max_column: %d" % (max_row, max_column))
+    # api_logger.info("max_row: %d, max_column: %d" % (max_row, max_column))
     # 结果，数组存储
     result = []
     heads = []
@@ -45,7 +46,7 @@ def excel2json(excel_file, json_file_name):
             cell = sheet.cell(row + 1, column + 1)
             value = cell.value
             one_line[k] = value
-        # print(one_line)
+        # api_logger.info(one_line)
         result.append(one_line)
     book.close()
     # 将json保存为文件

@@ -4,12 +4,12 @@ import gradio as gr
 import tempfile
 import shutil
 from computeData import *
-
+from logger_settings import api_logger
 
 def generate_file(file_obj):
     global tmpdir
-    print('临时文件夹地址：{}'.format(tmpdir))
-    print('上传文件的地址：{}'.format(file_obj.name))  # 输出上传后的文件在gradio中保存的绝对地址
+    api_logger.info('临时文件夹地址：{}'.format(tmpdir))
+    api_logger.info('上传文件的地址：{}'.format(file_obj.name))  # 输出上传后的文件在gradio中保存的绝对地址
 
     dirname, filename = os.path.split(file_obj.name)
 

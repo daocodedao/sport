@@ -9,7 +9,7 @@ from item_body_sit_ups import *
 from item_body_50_8 import *
 from item_compose import *
 import pandas as pd
-
+from logger_settings import api_logger
 
 
 
@@ -58,4 +58,4 @@ def startComputeXls(inFilePath, outFilePath):
     df = pd.DataFrame(srcData)
     df.to_excel(outFilePath, index=False)
 
-    print(f"完成, 输出文件 {outFilePath}")
+    api_logger.info(f"完成, 输出文件 {outFilePath}")
