@@ -1,3 +1,5 @@
 /srcData
 /__pycache__
 /build
+/flagged
+/tmp

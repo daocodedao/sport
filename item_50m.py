@@ -48,3 +48,16 @@ def getData_from_50m(data):
  
 
     return data_score,data_level   
+
+
+def updateDatas_from_50m(srcDatas, itemNameArray):
+    itemNameArray.append(itemName)
+    print(f"开始[{itemName}]检索")
+    for data in srcDatas:
+        if not f"{itemName}成绩" in data:
+            data[f"{itemName}得分"] = ""
+            data[f"{itemName}等级"] = ""
+            continue
+        score, level = getData_from_50m(data)
+        data[f"{itemName}得分"] = score
+        data[f"{itemName}等级"] = level

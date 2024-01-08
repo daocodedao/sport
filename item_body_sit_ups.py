@@ -16,7 +16,7 @@ def getData_from_sit_ups(data):
      
     data_score = 0
     data_level = "不及格"
-    colName = f"{itemName}"
+    colName = f"{itemName}成绩"
     data_record = data[colName]
     dataSex = data["性别"]
     print(f"性别： {dataSex} {colName}:{data_record}")
@@ -45,4 +45,18 @@ def getData_from_sit_ups(data):
             print(f"{colName} data_score: {data_score} data_score: {data_level}")
             break
 
-    return data_score,data_level   
+    return data_score,data_level  
+
+
+def updateDatas_from_sit_ups(srcDatas, itemNameArray):
+    itemNameArray.append(itemName)
+    print(f"开始[{itemName}]检索")
+    for data in srcDatas:
+        if not f"{itemName}成绩" in data:
+            data[f"{itemName}得分"] = ""
+            data[f"{itemName}等级"] = ""
+            continue
+
+        score, level = getData_from_sit_ups(data)
+        data[f"{itemName}得分"] = score
+        data[f"{itemName}等级"] = level

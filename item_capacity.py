@@ -1,20 +1,20 @@
 # 肺活量
 from excelToJson import *
 
-
+itemName="肺活量"
 def checkBmiJsonExist():
-    if not os.path.exists('standard/肺活量.json'):
-        excel2json(u'standard/肺活量.xlsx', 'standard/肺活量.json')
+    if not os.path.exists(f'standard/{itemName}.json'):
+        excel2json(f'standard/{itemName}.xlsx', f'standard/{itemName}.json')
     
 
 checkBmiJsonExist()
-jsonDatas = json.load(open('standard/肺活量.json'))
+jsonDatas = json.load(open(f'standard/{itemName}.json'))
 
 def getData_from_capacity(data):
      
     data_score = ""
     data_level = ""
-    colName = "肺活量成绩"
+    colName = f"{itemName}成绩"
     data_record = data[colName]
     dataSex = data["性别"]
     print(f"性别： {dataSex} {colName}:{data_record}")
@@ -45,3 +45,18 @@ def getData_from_capacity(data):
 
 
     return data_score,data_level   
+
+
+def updateDatas_from_capacity(srcDatas, itemNameArray):
+    
+    itemNameArray.append(itemName)
+    print(f"开始[{itemName}]检索")
+    for data in srcDatas:
+        if not f"{itemName}成绩" in data:
+            data[f"{itemName}得分"] = ""
+            data[f"{itemName}等级"] = ""
+            continue
+
+        score, level = getData_from_capacity(data)
+        data[f"{itemName}得分"] = score
+        data[f"{itemName}等级"] = level

@@ -17,9 +17,9 @@ def getData_from_bmi(data):
     
     data_score = ""
     data_level = ""
-    data_record = data["身高体重指数"]
+    data_record = data[f"{itemName}指数"]
     dataSex = data["性别"]
-    print(f"性别： {dataSex} 身高体重指数:{data_record}")
+    print(f"性别： {dataSex} {itemName}指数:{data_record}")
     level = data["年级"]
     if not data_record or not level:
         return data_score, data_level
@@ -68,3 +68,18 @@ def getData_from_bmi(data):
 
 
     return data_score,data_level    
+
+
+
+def updateDatas_from_bmi(srcDatas, itemNameArray):
+    itemNameArray.append(itemName)
+    print(f"开始[{itemName}]检索")
+    for data in srcDatas:
+        if not f"{itemName}指数" in data:
+            data[f"{itemName}成绩"] = ""
+            data[f"{itemName}等级"] = ""
+            continue
+
+        score, level = getData_from_bmi(data)
+        data[f"{itemName}成绩"] = score
+        data[f"{itemName}等级"] = level

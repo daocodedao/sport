@@ -79,3 +79,19 @@ def getData_from_rope_skipping(data):
         
 
     return data_score,data_level,diffScore 
+
+
+def updateDatas_from_rope_skipping(srcDatas, itemNameArray):
+    itemNameArray.append(itemName)
+    print(f"开始[{itemName}]检索")
+    for data in srcDatas:
+        if not f"{itemName}成绩" in data:
+            data[f"{itemName}得分"] = ""
+            data[f"{itemName}等级"] = ""
+            data[f"附加分"] = 0
+            continue
+
+        score, level, addScore = getData_from_rope_skipping(data)
+        data[f"{itemName}得分"] = score
+        data[f"{itemName}等级"] = level
+        data[f"附加分"] = addScore

@@ -45,7 +45,7 @@ def excel2json(excel_file, json_file_name):
             cell = sheet.cell(row + 1, column + 1)
             value = cell.value
             one_line[k] = value
-        print(one_line)
+        # print(one_line)
         result.append(one_line)
     book.close()
     # 将json保存为文件
