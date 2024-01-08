@@ -9,7 +9,11 @@ pip install requirements.txt
 
 # 执行
 ```
+# 从python启动
 python app_sport.py
+
+# 命令行启动
+./start.sh
 ```
 
 # 标准
