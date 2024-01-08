@@ -39,13 +39,15 @@ def main():
         with gr.Row():
             gen_button = gr.Button("计算体测成绩")
         with gr.Row():
-            with gr.Accordion("demo案例"):
-                gr.Markdown("<div align='center'> <a href='https://pan.quark.cn/s/16b6619ea924'> 下载demo文件 </a>  </div>")
-
-
+            with gr.Accordion("说明"):
+                gr.Markdown("<div align='center'> \
+                             <a href='https://pan.quark.cn/s/16b6619ea924'> 下载excel标准文件 </a> \
+                             <br>\
+                             <br>\
+                             <a href='https://docs.qq.com/doc/DSVZnbnNQZlpuTk5i'> 查看使用说明 </a> \
+                             </div>")
 
         gen_button.click(generate_file, inputs=inputs, outputs=outputs)
-
 
         # 启动应用程序
         demo.launch(share=False, server_port=6006)
