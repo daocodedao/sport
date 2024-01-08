@@ -37,7 +37,7 @@ def main():
                 inputs = gr.components.File(label="上传文件", file_types=["xlsx"])
                 outputs = gr.components.File(label="下载文件", file_types=["xlsx"])
         with gr.Row():
-            gen_button = gr.Button("计算体侧成绩")
+            gen_button = gr.Button("计算体测成绩")
         with gr.Row():
             with gr.Accordion("demo案例"):
                 gr.Markdown("<div align='center'> <a href='https://pan.quark.cn/s/16b6619ea924'> 下载demo文件 </a>  </div>")
